@@ -7,7 +7,7 @@
 //
 
 import Foundation
-////
+
 class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorOutConnection {
     var interactor : NewsInteractorInConnection?
     var view: NewsViewControllerInConnection?

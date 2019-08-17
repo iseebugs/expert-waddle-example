@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NewsViewController: UIViewController, NewsViewControllerInConnection {
+
+    var presenter : NewsViewControllerOutConnection?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -27,7 +27,8 @@ class NewsContainer: NSObject {
     
     func newsViewControllerFromStoryboard() -> NewsViewController {
         let storyboard = mainStoryboard()
-        let viewController = storyboard.instantiateViewController(withIdentifier: NewsViewControllerIdentifier) as! NewsViewController
+        let viewController = storyboard.instantiateViewController(withIdentifier:
+                                                NewsViewControllerIdentifier) as! NewsViewController
         return viewController
     }
     

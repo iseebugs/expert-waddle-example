@@ -6,9 +6,9 @@
 //  Copyright © 2019 Anastasija Sergeeva. All rights reserved.
 //
 import UIKit
-import Foundation
 import WebKit
 import CoreData
+import Foundation
 
 class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorOutConnection {
 
@@ -19,7 +19,7 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
     
     //MARK: - View Out
     func viewIsReady() {
-        interactor.loadFeed(competionHandler: nil)
+        interactor.loadFeed()
     }
     
     func configureCell(indexPath: IndexPath, cell: NewsCell) -> UICollectionViewCell {
@@ -62,18 +62,16 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
             print(error.localizedDescription)
         }
         for item in savedItems {
-            print("🍟")
             let item = NewsItem(title: item.title ?? "", date: item.date ?? "",
-                                description: item.text ?? "", link: item.link ?? "")
+                                                description: item.text ?? "", link: item.link ?? "")
             self.newsItems.append(item)
         }
         self.view.reload()
     }
-
+                         //TODO: NewsItem и NewsCellContent надо было объединить в одну модель сразу
     //MARK: - Private
     private func saveFeed() {
         for item in newsItems {
-            // let item = newsItems.first!
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             let entity = NSEntityDescription.entity(forEntityName: "NewsCellContent", in: context)

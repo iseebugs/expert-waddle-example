@@ -15,7 +15,7 @@ struct NewsFeedConstants {
         return "News"
     }
     
-    static var urlString: URL {                      //https://developer.apple.com/news/rss/news.rss
+    static var urlString: URL {           //https://developer.apple.com/news/rss/news.rss не работал
         return URL(string:"https://news.yandex.com/science.rss")!
     }
  

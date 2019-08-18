@@ -12,7 +12,7 @@ class NewsInteractor_mock: NewsInteractor {
     
     var rssFeedItems = [NewsItem]()
 
-    override func loadFeed(competionHandler: (([NewsItem]) -> Void)?) {
+    override func loadFeed() {
         rssFeedItems.append(NewsItem(title: "ExampleTitle",
                                       date: "ExampleDate",
                                description: "ExampleDescription",

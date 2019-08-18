@@ -8,5 +8,7 @@
 
 import Foundation
 protocol NewsInteractorInConnection {
-    func loadFeed(competionHandler: (([NewsItem]) -> Void)?)
+    
+    func loadFeed()
+    
 }

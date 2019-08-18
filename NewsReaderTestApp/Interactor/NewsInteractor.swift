@@ -13,7 +13,6 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
     //MARK: - Properties
     var presenter : NewsInteractorOutConnection!
     fileprivate var rssFeedItems = [NewsItem]()
-    fileprivate var completion: (([NewsItem]) -> Void)?
     fileprivate var feedUrl = NewsFeedConstants.urlString
     fileprivate var currentElement = ""
     fileprivate var currentTitle = ""
@@ -22,25 +21,25 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
     fileprivate var currentLink = ""
     
     //MARK: - Interactor In
-    func loadFeed(competionHandler: (([NewsItem]) -> Void)?) {
-        self.getRSSFeed(competionHandler: competionHandler)
+    func loadFeed() {
+        self.getRSSFeed()
     }
     
     //MARK: - Private
-    fileprivate func getRSSFeed(competionHandler: (([NewsItem]) -> Void)?) {
-        self.completion = competionHandler
+    fileprivate func getRSSFeed() {
         let request = URLRequest(url: self.feedUrl)
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 if let error = error {
                     print(error.localizedDescription)
-                    self.presenter.loadOfflineFeed()
+                    DispatchQueue.main.async { [weak self] in
+                        self?.presenter.loadOfflineFeed()
+                    }
                 }
                 return
             }
             let xmlParser = XMLParser(data: data)
-            print(data)
             xmlParser.delegate = self
             xmlParser.parse()
         }
@@ -53,7 +52,6 @@ extension NewsInteractor: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
                 qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-        print(elementName)
         currentElement = elementName
         if currentElement == NewsFeedConstants.newsItemItem {
             self.currentTitle = ""
@@ -83,9 +81,7 @@ extension NewsInteractor: XMLParserDelegate {
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
-        completion?(self.rssFeedItems)
         presenter.updateNewsFeed(self.rssFeedItems)
-        print(self.rssFeedItems.count)
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {

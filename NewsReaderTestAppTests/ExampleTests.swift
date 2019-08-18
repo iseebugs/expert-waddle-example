@@ -12,7 +12,7 @@ class ExampleTests: XCTestCase {
 
     func testItemSaving() {
         let newsInteractor = NewsInteractor_mock()
-        newsInteractor.loadFeed(competionHandler: nil)
+        newsInteractor.loadFeed()
         XCTAssert((newsInteractor.rssFeedItems.count == 1), "ok")
     }
     

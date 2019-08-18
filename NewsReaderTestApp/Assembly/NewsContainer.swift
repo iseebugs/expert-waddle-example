@@ -13,7 +13,7 @@ import UIKit
 class NewsContainer: NSObject {
     
    // var addWireframe : AddWireframe?
-    var newsPresenter : NewsPresenter?
+    var newsPresenter : NewsPresenter!
     var rootContainer : RootContainer?
     var newsViewController : NewsViewController?
     
@@ -21,6 +21,7 @@ class NewsContainer: NSObject {
         let viewController = newsViewControllerFromStoryboard()
         viewController.presenter = newsPresenter
         newsViewController = viewController
+        newsViewController?.presenter = newsPresenter
         newsPresenter?.view = viewController as? NewsViewControllerInConnection
         rootContainer?.showRootViewController(viewController, inWindow: window)
     }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsCell" id="d2B-Oq-VqD" customClass="NewsCell" customModule="NewsReaderTestApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="303" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="303" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAx-sn-lg9">
+                        <rect key="frame" x="3" y="3" width="257" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osG-Tn-hEo">
+                        <rect key="frame" x="265" y="4.5" width="35" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.3921568627" green="0.3921568627" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYi-fN-MhU">
+                        <rect key="frame" x="3" y="32" width="297" height="74"/>
+                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation </string>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="osG-Tn-hEo" firstAttribute="centerY" secondItem="RAx-sn-lg9" secondAttribute="centerY" id="55N-L7-QXM"/>
+                <constraint firstItem="JYi-fN-MhU" firstAttribute="top" secondItem="RAx-sn-lg9" secondAttribute="bottom" constant="5" id="CDd-c4-ygy"/>
+                <constraint firstItem="JYi-fN-MhU" firstAttribute="leading" secondItem="d2B-Oq-VqD" secondAttribute="leading" constant="3" id="PIA-Ty-fDN"/>
+                <constraint firstItem="RAx-sn-lg9" firstAttribute="leading" secondItem="d2B-Oq-VqD" secondAttribute="leading" constant="3" id="PZZ-7i-krd"/>
+                <constraint firstItem="osG-Tn-hEo" firstAttribute="leading" secondItem="RAx-sn-lg9" secondAttribute="trailing" constant="5" id="Vbb-a3-iko"/>
+                <constraint firstAttribute="trailing" secondItem="JYi-fN-MhU" secondAttribute="trailing" constant="3" id="hbH-IZ-dPl"/>
+                <constraint firstAttribute="bottom" secondItem="JYi-fN-MhU" secondAttribute="bottom" constant="3" id="jPl-Hz-hJH"/>
+                <constraint firstAttribute="trailing" secondItem="osG-Tn-hEo" secondAttribute="trailing" constant="3" id="rac-ay-CQl"/>
+                <constraint firstItem="RAx-sn-lg9" firstAttribute="top" secondItem="d2B-Oq-VqD" secondAttribute="top" constant="3" id="vD5-Kb-Bbm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="eMF-Wy-Fwf"/>
+            <size key="customSize" width="303" height="109"/>
+            <connections>
+                <outlet property="dateLabel" destination="osG-Tn-hEo" id="MDv-gs-nxH"/>
+                <outlet property="descriptionLabel" destination="JYi-fN-MhU" id="c6a-Ik-JoO"/>
+                <outlet property="titleLabel" destination="RAx-sn-lg9" id="qA9-JN-4GZ"/>
+            </connections>
+            <point key="canvasLocation" x="42.753623188405797" y="18.415178571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>

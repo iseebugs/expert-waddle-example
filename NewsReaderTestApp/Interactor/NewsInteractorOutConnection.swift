@@ -9,4 +9,6 @@
 import Foundation
 protocol NewsInteractorOutConnection {
     
+    func updateNewsFeed(_ news: [NewsItem])
+    
 }

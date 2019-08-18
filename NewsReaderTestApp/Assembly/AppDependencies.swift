@@ -25,7 +25,8 @@ class AppDependencies {
         //let coreDataStore = CoreDataStore()
         //let clock = DeviceClock()
         let rootContainer = RootContainer()
-        
+        let newsVC = NewsViewController()
+
         let newsPresenter = NewsPresenter()
        // let listDataManager = ListDataManager()
         let newsInteractor = NewsInteractor()//dataManager: listDataManager, clock: clock)
@@ -36,14 +37,13 @@ class AppDependencies {
       //  let addDataManager = AddDataManager()
         
         newsInteractor.presenter = newsPresenter
-        
+        newsVC.presenter = newsPresenter
         newsPresenter.interactor = newsInteractor
        // listPresenter.container = container
         
-     //   container.addWireframe = addWireframe
-       // container.listPresenter = listPresenter
+        container.newsPresenter = newsPresenter
         container.rootContainer = rootContainer
-        
+       // container.newsViewController = 
         //listDataManager.coreDataStore = coreDataStore
         
         //addInteractor.addDataManager = addDataManager

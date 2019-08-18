@@ -6,6 +6,6 @@ target 'NewsReaderTestApp' do
   use_frameworks!
 
   # Pods for NewsReaderTestApp
-  pod 'Dip'
+  pod 'PullToRefresher', '~> 3.1'
 
 end

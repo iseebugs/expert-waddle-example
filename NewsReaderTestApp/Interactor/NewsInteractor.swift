@@ -19,6 +19,7 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
     fileprivate var currentTitle = ""
     fileprivate var currentDate = ""
     fileprivate var currentDescription = ""
+    fileprivate var currentLink = ""
 
     //MARK: - Life Cycle
     
@@ -51,10 +52,8 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
             xmlParser.parse()
         }
         task.resume()
-        
     }
     
-
 }
 
 extension NewsInteractor: XMLParserDelegate {
@@ -67,14 +66,16 @@ extension NewsInteractor: XMLParserDelegate {
             self.currentTitle = ""
             self.currentDate = ""
             self.currentDescription = ""
+            self.currentLink = ""
         }
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentElement {
-        case "title": currentTitle += string; print(string + "💙")
+        case "title": currentTitle += string
         case "pubDate": currentDate += string
         case "description": currentDescription += string
+        case "link": currentLink += string
         default: break
         }
     }
@@ -83,9 +84,8 @@ extension NewsInteractor: XMLParserDelegate {
                                                                      qualifiedName qName: String?) {
         if elementName == "item" {
             let item = NewsItem(title: currentTitle, date: currentDate,
-                                                                    description: currentDescription)
+                                                 description: currentDescription, link: currentLink)
             self.rssFeedItems.append(item)
-            print("ITEM 🔥")
         }
     }
     
@@ -96,6 +96,6 @@ extension NewsInteractor: XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        
+        print(parseError.localizedDescription)
     }
 }

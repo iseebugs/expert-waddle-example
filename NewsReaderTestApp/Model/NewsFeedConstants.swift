@@ -12,19 +12,21 @@ import UIKit
 struct NewsFeedConstants {
     
     static var title: String {
-        return "Apple Dev News"
+        return "News"
     }
     
     static var urlString: URL {
         return URL(string:"https://news.yandex.com/science.rss")!
-            //"https://developer.apple.com/news/rss/news.rss")!
+            //https://developer.apple.com/news/rss/news.rss
     }
  
-    
-//    static var image: UIImage {
-//        return #imageLiteral(resourceName: "top")
-//    }
-//
+    static var cellHeight: CGFloat {
+        return 100.0
+    }
+
+    static var cellInteritemSpace: CGFloat {
+        return 10.0
+    }
 
 //    static var buttonTitle: String {
 //        return TFLLocalizedString("chat_activate_vip")

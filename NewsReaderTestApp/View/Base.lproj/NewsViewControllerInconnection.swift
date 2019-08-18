@@ -6,10 +6,12 @@
 //  Copyright © 2019 Anastasija Sergeeva. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 protocol NewsViewControllerInConnection {
     
     func reload()
-    
+    func showWebView(vc: UIViewController) 
+
 }

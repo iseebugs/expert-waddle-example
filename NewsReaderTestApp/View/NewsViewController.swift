@@ -19,14 +19,11 @@ class NewsViewController: UIViewController, NewsViewControllerInConnection {
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(UINib(nibName: "NewsCell", bundle: .main), forCellWithReuseIdentifier: "NewsCell")  //registerNib(cellClass: NewsCell.self)
+        collectionView.register(UINib(nibName: "NewsCell", bundle: .main),
+                                                             forCellWithReuseIdentifier: "NewsCell")
         setupUI()
         presenter.viewIsReady()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
     
     //MARK: - View In
     func reload() {
@@ -35,7 +32,9 @@ class NewsViewController: UIViewController, NewsViewControllerInConnection {
         }
     }
     
-    //MARK: - View out
+    func showWebView(vc: UIViewController) {
+        self.navigationController?.show(vc, sender: nil)
+    }
     
     
     //MARK: - Private functions
@@ -43,15 +42,10 @@ class NewsViewController: UIViewController, NewsViewControllerInConnection {
         self.title = NewsFeedConstants.title
         collectionView.dataSource = self
         collectionView.delegate = self
-
-       // self.setupPhotofeedView()
-       // titleLabel.text = TFLLocalizedString("people_nearby_access_to_location_description")
-       // actionButton.setTitle(TFLLocalizedString("general_allow"), for: .normal)
     }
     
-
+    //MARK: - View out
     //MARK: - Actions
-
 
 }
 
@@ -69,10 +63,31 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         return presenter.configureCell(indexPath: indexPath, cell: cell as! NewsCell)
     }
     
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        presenter.cellDidPress(indexPath)
+    }
+        
+}
 
-//    func collectionView(_ collectionView: UICollectionView,
-//                        shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-//        return presenter.shouldShowMenuForItemAtIndexPath(indexPath)
-//    }
+extension NewsViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: collectionView.bounds.width - 5, height: NewsFeedConstants.cellHeight)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return NewsFeedConstants.cellInteritemSpace
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return NewsFeedConstants.cellInteritemSpace
+    }
 }

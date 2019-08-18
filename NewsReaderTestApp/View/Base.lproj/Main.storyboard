@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ABJ-lU-zeq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="10" y="98" width="394" height="764"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hGb-gl-nzn">
                                     <size key="itemSize" width="122" height="92"/>
@@ -33,9 +33,9 @@
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ABJ-lU-zeq" secondAttribute="bottom" id="Dbj-wa-XAM"/>
-                            <constraint firstItem="ABJ-lU-zeq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dAA-Eu-gTJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ABJ-lU-zeq" secondAttribute="trailing" id="kZk-J9-byp"/>
-                            <constraint firstItem="ABJ-lU-zeq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qKk-aM-xLn"/>
+                            <constraint firstItem="ABJ-lU-zeq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="dAA-Eu-gTJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ABJ-lU-zeq" secondAttribute="trailing" constant="10" id="kZk-J9-byp"/>
+                            <constraint firstItem="ABJ-lU-zeq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qKk-aM-xLn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

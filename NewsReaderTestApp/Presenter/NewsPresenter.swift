@@ -7,6 +7,7 @@
 //
 import UIKit
 import Foundation
+import WebKit
 
 class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorOutConnection {
 
@@ -21,6 +22,7 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
     }
     
     func pullToRefreshReleased() {
+        
     }
     
     func configureCell(indexPath: IndexPath, cell: NewsCell) -> UICollectionViewCell {
@@ -34,10 +36,14 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
     }
     
     func cellDidPress(_ indexPath: IndexPath) {
-        
+        let item = self.newsItems[indexPath.row]
+        let delimiter = "?"
+        let newstr = item.link
+        var shortString = newstr.components(separatedBy: delimiter)
+        guard let link = URL(string: shortString[0]) else { return }
+        let vc = SingleNewsItemViewController(currentUrl: link)
+        view.showWebView(vc: vc)
     }
-    
-    //MARK: - Interactor In
     
     
     //MARK: - Interactor Out
@@ -46,5 +52,6 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
         view.reload()
     }
 
+    //MARK: - Private
 
 }

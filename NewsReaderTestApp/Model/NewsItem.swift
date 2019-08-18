@@ -28,4 +28,6 @@ struct NewsItem {
         }
     }
     
+    var link: String = ""
+
 }

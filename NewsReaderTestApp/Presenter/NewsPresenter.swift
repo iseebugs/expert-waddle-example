@@ -21,10 +21,6 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
         interactor.loadFeed(competionHandler: nil)
     }
     
-    func pullToRefreshReleased() {
-        
-    }
-    
     func configureCell(indexPath: IndexPath, cell: NewsCell) -> UICollectionViewCell {
         let item = self.newsItems[indexPath.row]
         cell.configure(title: item.title, subtitle: item.date, description: item.description)

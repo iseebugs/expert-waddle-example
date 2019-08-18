@@ -12,9 +12,6 @@ import Foundation
 protocol NewsViewControllerOutConnection {
     
     func viewIsReady()
-
-    func pullToRefreshReleased()
-  //  func viewDidLayoutSubviews()
     
     func configureCell(indexPath: IndexPath, cell: NewsCell) -> UICollectionViewCell
 

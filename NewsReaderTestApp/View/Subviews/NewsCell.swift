@@ -25,8 +25,11 @@ class NewsCell: UICollectionViewCell {
     //MARK: - Interface
     func configure(title: String, subtitle: String, description: String) {
         self.titleLabel.text = title
-        self.dateLabel.text = subtitle
         self.descriptionLabel.text = description
+
+        let delimiter = " "
+        var shortString = subtitle.components(separatedBy: delimiter)
+        self.dateLabel.text = shortString[0] + " " + shortString[1] + " " + shortString[2]        
     }
     
     //MARK: - Private functions

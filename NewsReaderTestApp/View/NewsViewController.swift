@@ -5,13 +5,13 @@
 //  Created by Anastasija Sergeeva on 17/08/2019.
 //  Copyright © 2019 Anastasija Sergeeva. All rights reserved.
 //
-
 import UIKit
 
 class NewsViewController: UIViewController, NewsViewControllerInConnection {
     
     //MARK: - Properties
     var presenter: NewsViewControllerOutConnection!
+    var refreshControl = UIRefreshControl()
 
     //MARK: - UIProperties
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,14 +21,15 @@ class NewsViewController: UIViewController, NewsViewControllerInConnection {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "NewsCell", bundle: .main),
                                                              forCellWithReuseIdentifier: "NewsCell")
-        setupUI()
         presenter.viewIsReady()
+        setupUI()
     }
     
     //MARK: - View In
     func reload() {
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
+            self?.refreshControl.endRefreshing()
         }
     }
     
@@ -42,10 +43,15 @@ class NewsViewController: UIViewController, NewsViewControllerInConnection {
         self.title = NewsFeedConstants.title
         collectionView.dataSource = self
         collectionView.delegate = self
+        refreshControl.attributedTitle = NSAttributedString(string: "updating")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        collectionView.addSubview(refreshControl)
     }
     
-    //MARK: - View out
-    //MARK: - Actions
+    @objc func refresh() {
+        presenter.viewIsReady()
+    }
 
 }
 
@@ -75,7 +81,8 @@ extension NewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: collectionView.bounds.width - 5, height: NewsFeedConstants.cellHeight)
+        let size = CGSize(width: collectionView.bounds.width,
+                         height: NewsFeedConstants.cellHeight)
         return size
     }
     

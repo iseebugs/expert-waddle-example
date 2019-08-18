@@ -41,7 +41,6 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
         view.showWebView(vc: vc)
     }
     
-    
     //MARK: - Interactor Out
     func updateNewsFeed(_ news: [NewsItem]) {
         self.newsItems = news

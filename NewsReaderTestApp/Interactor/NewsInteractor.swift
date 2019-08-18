@@ -29,9 +29,6 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
         self.getRSSFeed(competionHandler: competionHandler)
     }
     
-    //MARK: - Interactor Out
-
-    
     //MARK: - Private
     fileprivate func getRSSFeed(competionHandler: (([NewsItem]) -> Void)?) {
         self.completion = competionHandler
@@ -62,7 +59,7 @@ extension NewsInteractor: XMLParserDelegate {
                   qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         print(elementName)
         currentElement = elementName
-        if currentElement == "item" {
+        if currentElement == NewsFeedConstants.newsItemItem {
             self.currentTitle = ""
             self.currentDate = ""
             self.currentDescription = ""
@@ -72,10 +69,10 @@ extension NewsInteractor: XMLParserDelegate {
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentElement {
-        case "title": currentTitle += string
-        case "pubDate": currentDate += string
-        case "description": currentDescription += string
-        case "link": currentLink += string
+        case NewsFeedConstants.newsItemTitle: currentTitle += string
+        case NewsFeedConstants.newsItemPubDate : currentDate += string
+        case NewsFeedConstants.newsItemDescription: currentDescription += string
+        case NewsFeedConstants.newsItemLink: currentLink += string
         default: break
         }
     }

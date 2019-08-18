@@ -15,9 +15,8 @@ struct NewsFeedConstants {
         return "News"
     }
     
-    static var urlString: URL {
+    static var urlString: URL {                      //https://developer.apple.com/news/rss/news.rss
         return URL(string:"https://news.yandex.com/science.rss")!
-            //https://developer.apple.com/news/rss/news.rss
     }
  
     static var cellHeight: CGFloat {
@@ -28,15 +27,23 @@ struct NewsFeedConstants {
         return 10.0
     }
 
-//    static var buttonTitle: String {
-//        return TFLLocalizedString("chat_activate_vip")
-//    }
-//
-//    static var showEvent: String {
-//        return "tutorial_popup_vip_status_show"
-//    }
-//
-//    static var actionEvent: String {
-//        return "tutorial_popup_vip_status_button_pressed"
-//    }
+    static var newsItemTitle: String {
+        return "title"
+    }
+
+    static var newsItemPubDate: String {
+        return "pubDate"
+    }
+
+    static var newsItemDescription: String {
+        return "description"
+    }
+    
+    static var newsItemLink: String {
+        return "link"
+    }
+    
+    static var newsItemItem: String {
+        return "item"
+    }
 }

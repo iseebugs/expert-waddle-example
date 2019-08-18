@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import WebKit
+import CoreData
 
 class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorOutConnection {
 
@@ -44,9 +45,49 @@ class NewsPresenter : NSObject, NewsViewControllerOutConnection, NewsInteractorO
     //MARK: - Interactor Out
     func updateNewsFeed(_ news: [NewsItem]) {
         self.newsItems = news
-        view.reload()
+        DispatchQueue.main.async { [weak self] in
+            self?.view.reload()
+            self?.saveFeed()
+        }
+    }
+    
+    func loadOfflineFeed() {
+        var savedItems = [NewsCellContent]()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NewsCellContent> = NewsCellContent.fetchRequest()
+        do {
+            savedItems = try context.fetch(fetchRequest)
+        } catch {
+            print(error.localizedDescription)
+        }
+        for item in savedItems {
+            print("🍟")
+            let item = NewsItem(title: item.title ?? "", date: item.date ?? "",
+                                description: item.text ?? "", link: item.link ?? "")
+            self.newsItems.append(item)
+        }
+        self.view.reload()
     }
 
     //MARK: - Private
-
+    private func saveFeed() {
+        for item in newsItems {
+            // let item = newsItems.first!
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "NewsCellContent", in: context)
+            let newsItemObject = NSManagedObject(entity: entity!, insertInto: context) as! NewsCellContent
+            newsItemObject.title = item.title
+            newsItemObject.date = item.date
+            newsItemObject.text = item.description
+            newsItemObject.link = item.link
+            do {
+                try context.save()
+            } catch {
+                print("saving error")
+            }
+        }
+    }
+    
 }

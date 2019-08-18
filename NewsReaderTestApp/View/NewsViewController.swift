@@ -28,8 +28,8 @@ class NewsViewController: UIViewController, NewsViewControllerInConnection {
     //MARK: - View In
     func reload() {
         DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
-            self?.refreshControl.endRefreshing()
+        self?.collectionView.reloadData()
+        self?.refreshControl.endRefreshing()
         }
     }
     

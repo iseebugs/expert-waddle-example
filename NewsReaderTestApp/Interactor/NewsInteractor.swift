@@ -20,9 +20,6 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
     fileprivate var currentDate = ""
     fileprivate var currentDescription = ""
     fileprivate var currentLink = ""
-
-    //MARK: - Life Cycle
-    
     
     //MARK: - Interactor In
     func loadFeed(competionHandler: (([NewsItem]) -> Void)?) {
@@ -36,11 +33,10 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                
                 if let error = error {
                     print(error.localizedDescription)
+                    self.presenter.loadOfflineFeed()
                 }
-                
                 return
             }
             let xmlParser = XMLParser(data: data)
@@ -56,7 +52,7 @@ class NewsInteractor: NSObject, NewsInteractorInConnection {
 extension NewsInteractor: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?,
-                  qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+                qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         print(elementName)
         currentElement = elementName
         if currentElement == NewsFeedConstants.newsItemItem {
@@ -66,7 +62,7 @@ extension NewsInteractor: XMLParserDelegate {
             self.currentLink = ""
         }
     }
-
+    
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch currentElement {
         case NewsFeedConstants.newsItemTitle: currentTitle += string
@@ -78,7 +74,7 @@ extension NewsInteractor: XMLParserDelegate {
     }
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?,
-                                                                     qualifiedName qName: String?) {
+                qualifiedName qName: String?) {
         if elementName == "item" {
             let item = NewsItem(title: currentTitle, date: currentDate,
                                                  description: currentDescription, link: currentLink)

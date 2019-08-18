@@ -31,6 +31,7 @@
 		0D8C9E5C2309C8D200E6805B /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C9E5B2309C8D200E6805B /* ExampleTests.swift */; };
 		0D8C9E5F2309CC8100E6805B /* NewsInteractor_mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C9E5D2309CBAF00E6805B /* NewsInteractor_mock.swift */; };
 		0D8C9E602309CF4000E6805B /* NewsInteractor_mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C9E5D2309CBAF00E6805B /* NewsInteractor_mock.swift */; };
+		0D8C9E632309D3A100E6805B /* NewsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C9E612309D3A100E6805B /* NewsDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		0D8C9E552309C88400E6805B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D8C9E5B2309C8D200E6805B /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		0D8C9E5D2309CBAF00E6805B /* NewsInteractor_mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor_mock.swift; sourceTree = "<group>"; };
+		0D8C9E622309D3A100E6805B /* NewsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		B2A1926AC47FA44492222523 /* Pods-NewsReaderTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReaderTestApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsReaderTestApp/Pods-NewsReaderTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D1A48716E20BC90394F2F57C /* Pods-NewsReaderTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReaderTestApp.release.xcconfig"; path = "Target Support Files/Pods-NewsReaderTestApp/Pods-NewsReaderTestApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				0D8C9E2A23089FF300E6805B /* View */,
 				0D8C9E112308966800E6805B /* AppDelegate.swift */,
 				0D8C9E1D2308966900E6805B /* Info.plist */,
+				0D8C9E612309D3A100E6805B /* NewsDataModel.xcdatamodeld */,
 			);
 			path = NewsReaderTestApp;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				0D8C9E382308A28400E6805B /* NewsViewControllerInconnection.swift in Sources */,
 				0D8C9E5F2309CC8100E6805B /* NewsInteractor_mock.swift in Sources */,
 				0D8C9E142308966800E6805B /* NewsViewController.swift in Sources */,
+				0D8C9E632309D3A100E6805B /* NewsDataModel.xcdatamodeld in Sources */,
 				0D8C9E2923089F9700E6805B /* NewsPresenter.swift in Sources */,
 				0D8C9E122308966800E6805B /* AppDelegate.swift in Sources */,
 				0D8C9E4A2309642600E6805B /* UICollectionView+Nib.swift in Sources */,
@@ -651,6 +655,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0D8C9E612309D3A100E6805B /* NewsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0D8C9E622309D3A100E6805B /* NewsDataModel.xcdatamodel */,
+			);
+			currentVersion = 0D8C9E622309D3A100E6805B /* NewsDataModel.xcdatamodel */;
+			path = NewsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0D8C9E062308966800E6805B /* Project object */;
 }
